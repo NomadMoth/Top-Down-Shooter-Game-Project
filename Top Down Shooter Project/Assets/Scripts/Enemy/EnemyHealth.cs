@@ -8,6 +8,8 @@ public class EnemyHealth : MonoBehaviour
     public int currentHealth;
     public int damageToGive = 1;
 
+    private EnemyHealthBar healthBar;
+
 
     void Start()
     {
@@ -30,6 +32,7 @@ public class EnemyHealth : MonoBehaviour
     public void HurtEnemy(int dmg)
     {
         currentHealth -= dmg;
+      //  healthBar.SetHealth(currentHealth);
 
         if (currentHealth <= 0)
         {

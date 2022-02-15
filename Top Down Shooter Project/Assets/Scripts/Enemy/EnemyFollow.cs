@@ -15,6 +15,8 @@ public class EnemyFollow : MonoBehaviour
 
     void Update()
     {
+        transform.right = target.position - transform.position;
+
         if (Vector2.Distance(transform.position, target.position) > minDistance)
         {
             transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);

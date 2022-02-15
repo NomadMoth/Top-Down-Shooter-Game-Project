@@ -18,7 +18,7 @@ public class EnemyProjectile : MonoBehaviour
     void Update()
     {
         transform.position = Vector2.MoveTowards(transform.position, target, speed * Time.deltaTime);
-        Destroy(gameObject, 1f);
+        Destroy(gameObject, 4f);
     }
 
     void OnTriggerEnter2D(Collider2D collision)

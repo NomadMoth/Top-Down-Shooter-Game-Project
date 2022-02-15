@@ -8,9 +8,6 @@ public class EnemyHealth : MonoBehaviour
     public int currentHealth;
     public int damageToGive = 1;
 
-    public GameObject deathEffect;
-    public GameObject hitEffect;
-
 
     void Start()
     {
@@ -24,7 +21,7 @@ public class EnemyHealth : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Bullet")
+        if (other.tag == "PlayerProjectile")
         {
             HurtEnemy(damageToGive);
         }
@@ -32,13 +29,10 @@ public class EnemyHealth : MonoBehaviour
 
     public void HurtEnemy(int dmg)
     {
-        Instantiate(hitEffect, transform.position, transform.rotation);
-
         currentHealth -= dmg;
 
         if (currentHealth <= 0)
         {
-            Instantiate(deathEffect, transform.position, transform.rotation);
             gameObject.SetActive(false);
             Destroy(gameObject, 2f);
         }

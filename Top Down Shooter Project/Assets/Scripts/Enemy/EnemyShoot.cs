@@ -10,9 +10,11 @@ public class EnemyShoot : MonoBehaviour
 
     public Transform player;
     public GameObject projectile;
+    public Transform attackPoint;
 
     private float timeBtwShots;
     public float startBtwShots;
+    public float projectileForce;
 
     void Start()
     {
@@ -23,6 +25,8 @@ public class EnemyShoot : MonoBehaviour
 
     void Update()
     {
+        transform.right = player.position - transform.position;
+
         if (Vector2.Distance(transform.position, player.position) > stoppingDistance)
         {
             transform.position = Vector2.MoveTowards(transform.position, player.position, moveSpeed * Time.deltaTime);
@@ -38,7 +42,9 @@ public class EnemyShoot : MonoBehaviour
 
         if (timeBtwShots <= 0)
         {
-            Instantiate(projectile, transform.position, Quaternion.identity);
+            GameObject bullet = Instantiate(projectile, attackPoint.position, attackPoint.rotation);
+            Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+            rb.AddForce(attackPoint.up * projectileForce, ForceMode2D.Impulse);
             timeBtwShots = startBtwShots;
         }
         else

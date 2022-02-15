@@ -4,32 +4,25 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public GameObject hitEffect;
-    public GameObject player;
-    public GameObject enemy;
+    public GameObject explosion;
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        GameObject effect = Instantiate(hitEffect, transform.position, Quaternion.identity);
-        Destroy(effect, 5f);
+        Instantiate(explosion, transform.position, transform.rotation);
         Destroy(gameObject);
     }
 
-    void OnCollisionEnter(Collision collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject == player)
+        if (collision.tag == "Enemy")
         {
-
-        }
-
-        if (collision.gameObject == enemy)
-        {
-
+            Instantiate(explosion, transform.position, transform.rotation);
+            Destroy(gameObject, 0.02f);
         }
     }
 
     void Update()
     {
-        Destroy(gameObject, 3);
+        Destroy(gameObject, 3f);
     }
 }

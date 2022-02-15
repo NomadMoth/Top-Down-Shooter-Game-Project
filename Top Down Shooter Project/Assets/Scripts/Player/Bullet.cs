@@ -16,6 +16,7 @@ public class Bullet : MonoBehaviour
     {
         if (collision.tag == "Enemy")
         {
+            collision.GetComponent<EnemyHealth>().HurtEnemy(1);
             Instantiate(explosion, transform.position, transform.rotation);
             Destroy(gameObject, 0.02f);
         }

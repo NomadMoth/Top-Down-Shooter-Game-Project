@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyProjectile1 : MonoBehaviour
+public class EnemyHomingProjectile : MonoBehaviour
 {
     public float speed;
 
@@ -25,6 +25,7 @@ public class EnemyProjectile1 : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
+            collision.GetComponent<PlayerStats>().HurtPlayer(1);
             Destroy(gameObject);
         }
     }

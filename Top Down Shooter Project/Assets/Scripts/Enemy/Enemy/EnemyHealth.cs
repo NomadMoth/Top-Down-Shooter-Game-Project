@@ -36,6 +36,7 @@ public class EnemyHealth : MonoBehaviour
 
         if (currentHealth <= 0)
         {
+            ScoreManager.scoreValue += 10;
             gameObject.SetActive(false);
             Destroy(gameObject, 2f);
         }

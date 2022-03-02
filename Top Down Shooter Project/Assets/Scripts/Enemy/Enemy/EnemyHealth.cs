@@ -32,7 +32,6 @@ public class EnemyHealth : MonoBehaviour
     public void HurtEnemy(int dmg)
     {
         currentHealth -= dmg;
-      //  healthBar.SetHealth(currentHealth);
 
         if (currentHealth <= 0)
         {

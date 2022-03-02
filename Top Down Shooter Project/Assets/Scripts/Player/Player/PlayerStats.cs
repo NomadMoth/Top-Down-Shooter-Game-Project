@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerStats : MonoBehaviour
 {
     public int maxHealth = 4;
-    public int currentHealth;
+    public static int currentHealth;
     public HealthBar healthBar;
     public GameObject player;
 
@@ -76,16 +76,6 @@ public class PlayerStats : MonoBehaviour
 
                 flashCounter = flashLength;
             }
-        }
-    }
-
-    public void HealPlayer(int healAmount)
-    {
-        currentHealth += healAmount;
-
-        if (currentHealth > maxHealth)
-        {
-            currentHealth = maxHealth;
         }
     }
 

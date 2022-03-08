@@ -20,6 +20,8 @@ public class PlayerStats : MonoBehaviour
     public Vector2 respawnPoint;
     public float respawnDelay = 2f;
 
+    public GameObject gameOverMenuUI;
+
     void Start()
     {
         currentHealth = maxHealth;
@@ -66,7 +68,7 @@ public class PlayerStats : MonoBehaviour
 
             if (currentHealth <= 0)
             {
-                Respawn();
+                GameOver();
             }
             else
             {
@@ -79,28 +81,9 @@ public class PlayerStats : MonoBehaviour
         }
     }
 
-    public void Respawn()
+    public void GameOver()
     {
-        if (!isRespawning)
-        {
-            StartCoroutine("RespawnDelay");
-        }
-    }
-
-    public IEnumerator RespawnDelay()
-    {
-        isRespawning = true;
-        player.SetActive(false);
-        yield return new WaitForSeconds(respawnDelay);
-        isRespawning = false;
-        player.SetActive(true);
-
-
-        player.transform.position = respawnPoint;
-        currentHealth = maxHealth;
-
-        invincibilityCounter = invincibilityLength;
-        playerRend.enabled = false;
-        flashCounter = flashLength;
+        gameOverMenuUI.SetActive(true);
+        Time.timeScale = 0f;
     }
 }

@@ -20,6 +20,7 @@ public class PlayerStats : MonoBehaviour
     public Vector2 respawnPoint;
     public float respawnDelay = 2f;
 
+    private bool isGameOVer = false;
     public GameObject gameOverMenuUI;
 
     void Start()
@@ -35,7 +36,14 @@ public class PlayerStats : MonoBehaviour
         {
             HurtPlayer(1);
         }
+    }
 
+    void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.tag == "Enemy")
+        {
+            HurtPlayer(1);
+        }
     }
 
     void Update()
@@ -57,6 +65,11 @@ public class PlayerStats : MonoBehaviour
                     playerRend.enabled = true;
                 }
           }
+
+        if (isGameOVer == true)
+        {
+            GameOver();
+        }
     }
 
     public void HurtPlayer(int damage)
@@ -68,7 +81,7 @@ public class PlayerStats : MonoBehaviour
 
             if (currentHealth <= 0)
             {
-                GameOver();
+                isGameOVer = true;
             }
             else
             {
@@ -77,6 +90,8 @@ public class PlayerStats : MonoBehaviour
                 playerRend.enabled = false;
 
                 flashCounter = flashLength;
+
+                isGameOVer = false;
             }
         }
     }

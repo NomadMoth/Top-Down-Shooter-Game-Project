@@ -7,6 +7,7 @@ public class GameOverMenu : MonoBehaviour
 {
     private bool isGameOver;
 
+
     public GameObject gameOverMenuUI;
 
     void Start()

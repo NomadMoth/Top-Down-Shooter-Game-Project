@@ -47,6 +47,7 @@ public class PauseMenu : MonoBehaviour
 
     public void LoadMenu()
     {
+        ScoreManager.scoreValue = 0;
         Resume();
         SceneManager.LoadScene("MainMenu");
     }

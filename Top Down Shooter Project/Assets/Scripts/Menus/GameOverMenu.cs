@@ -29,6 +29,7 @@ public class GameOverMenu : MonoBehaviour
 
     public void LoadMenu()
     {
+        ScoreManager.scoreValue = 0;
         Resume();
         SceneManager.LoadScene("MainMenu");
     }

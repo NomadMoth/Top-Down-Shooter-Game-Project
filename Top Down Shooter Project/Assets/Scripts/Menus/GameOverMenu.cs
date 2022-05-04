@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameOverMenu : MonoBehaviour
 {
-    private bool isGameOver;
+ //   private bool isGameOver;
 
 
     public GameObject gameOverMenuUI;
@@ -17,7 +17,7 @@ public class GameOverMenu : MonoBehaviour
 
     public void Resume()
     {
-        isGameOver = false;
+      ///  isGameOver = false;
         gameOverMenuUI.SetActive(false);
         Time.timeScale = 1f;
     }

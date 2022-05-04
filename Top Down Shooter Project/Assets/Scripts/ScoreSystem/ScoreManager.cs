@@ -8,6 +8,8 @@ public class ScoreManager : MonoBehaviour
     public static float scoreValue = 0;
     Text score;
 
+    public GameObject winTxt;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,5 +20,11 @@ public class ScoreManager : MonoBehaviour
     void Update()
     {
         score.text = "Score: " + scoreValue;
+
+        if (scoreValue >= 40)
+        {
+            winTxt.SetActive(true);
+        }
+
     }
 }
